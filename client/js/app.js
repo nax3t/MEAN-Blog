@@ -8,7 +8,15 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		})
 		.when('/posts/new', {
 			templateUrl: "templates/new.html",
-			controller: "PostsController"
+			controller: "NewPostController"
+		})
+		.when('/posts/:id', {
+			templateUrl: "templates/show.html",
+			controller: "PostController"
+		})
+		.when('/posts/:id/edit', {
+			templateUrl: "templates/edit.html",
+			controller: "EditPostController"
 		})
 
 	$locationProvider.html5Mode(true);

@@ -1,0 +1,9 @@
+<h1>{{post.title}}</h1>
+<p>{{post.body}}</p>
+<img ng-src="{{post.imageUrl}}" alt="{{post.title}}" width="100px">
+<p>
+	<a ng-href="{{'/posts/'+post._id+'/edit'}}" class="btn btn-default">Edit</a>
+</p>
+<p>
+	<a ng-click="deletePost(post._id)" class="btn btn-danger">Delete</a>	
+</p>

@@ -5,12 +5,12 @@ var express = require('express'),
 	methodOverride = require('method-override'),
 	engine = require('ejs-mate'),
 	morgan = require("morgan"),
-	posts = require('./routes/posts'),
+	routes = require('./routes/posts'),
 	path = require("path");
 
 // use ejs-locals for all ejs templates: 
 app.engine('ejs', engine);
-// access client assets
+// access client assets from index view (line 32)
 app.use('/css',express.static(path.join(__dirname, '../client/css')));
 app.use('/js',express.static(path.join(__dirname, '../client/js')));
 app.use('/templates',express.static(path.join(__dirname, '../client/js/templates')));
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 // use method-override
 app.use(methodOverride('_method'));
 // api post routes
-app.use('/api', posts);
+app.use('/api/posts', routes);
 
 // Set home page route
 app.get('*', function(req, res) {
