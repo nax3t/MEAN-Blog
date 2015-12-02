@@ -1,0 +1,8 @@
+<p><a href="/posts/new" class="btn btn-success">Add Post</a></p>
+
+<div ng-repeat="post in posts | orderBy: 'id' : true">
+	<h1>{{post.title}}</h1>
+	<p>{{post.body}}</p>
+	<img ng-src="{{post.imageUrl}}" alt="{{post.title}}" width="100px">
+</div>
+
