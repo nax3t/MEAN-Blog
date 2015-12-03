@@ -5,7 +5,8 @@ var express = require('express'),
 	methodOverride = require('method-override'),
 	engine = require('ejs-mate'),
 	morgan = require("morgan"),
-	routes = require('./routes/posts'),
+	posts = require('./routes/posts'),
+	users = require('./routes/users'),
 	path = require("path");
 
 // use ejs-locals for all ejs templates: 
@@ -25,7 +26,9 @@ app.use(bodyParser.json());
 // use method-override
 app.use(methodOverride('_method'));
 // api post routes
-app.use('/api/posts', routes);
+app.use('/api/posts', posts);
+// api user routes
+app.use('/api', users);
 
 // Set home page route
 app.get('*', function(req, res) {
