@@ -2,6 +2,7 @@ var app = angular.module('meanBlog', ['ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider){
 	$routeProvider
+	// Post routes
 		.when('/posts',{
 			templateUrl: "templates/posts/index.html",
 			controller: "PostsController"
@@ -22,8 +23,15 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($ro
 		})
 		.when('/posts/:id/edit', {
 			templateUrl: "templates/posts/edit.html",
-			controller: "EditPostController"
+			controller: "EditPostController",
+			restricted: true,
+			resolve: {
+			  currentUser: function(UserService) {
+			    return UserService.getCurrentUser();
+			  }
+			}
 		})
+		// User routes
 		.when('/',{
 		    templateUrl: "templates/users/login.html",
 		    controller: "LoginController",
