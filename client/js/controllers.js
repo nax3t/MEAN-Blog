@@ -72,28 +72,28 @@ app.controller("PostsController", ['$scope', 'PostService', function($scope, Pos
 	}
 }]);
 
-app.controller("NewPostController", ['$scope', 'PostService', '$location', function($scope, PostService, $location) {
+app.controller("NewPostController", ['$scope', 'PostService', '$location', 'UserService', function($scope, PostService, $location, UserService) {
+	var user_id = UserService.getCurrentUser().id;
 	$scope.addPost = function(post) {
+		post.user = user_id;
 		PostService.addPost(post).then(function (post) {
 			$location.path('/posts')
 		})
 	}
 }]);
 
-app.controller("PostController", ['$scope', 'PostService', '$location', '$routeParams', 'UserService',
- function($scope, PostService, $location, $routeParams, UserService) {
+app.controller("PostController", ['$scope', 'PostService', '$location', '$routeParams', 'UserService', function($scope, PostService, $location, $routeParams, UserService) {
 	PostService.getPost($routeParams.id).then(function (post) {
 		$scope.post = post.data;
+		UserService.getSingleUser(post.data.user).then(function (user) {
+			$scope.post.user = user.data;
+		})
 	});
 
 	$scope.deletePost = function (id) {
-		if (UserService.getCurrentUser()) {
-			PostService.deletePost(id).then(function (data) {
-				$location.path('/posts');
-			})
-		} else {
-			$location.path('/');
-		}
+		PostService.deletePost(id).then(function (data) {
+			$location.path('/posts');
+		})
 	}
 }]);
 

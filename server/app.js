@@ -1,12 +1,12 @@
 // boilerplate code
 var express = require('express'),
-	app = express(),
-	bodyParser = require('body-parser'),
-	methodOverride = require('method-override'),
-	engine = require('ejs-mate'),
-	morgan = require("morgan"),
-	routes = require('./routes'),
-	path = require("path");
+		app = express(),
+		bodyParser = require('body-parser'),
+		methodOverride = require('method-override'),
+		engine = require('ejs-mate'),
+		morgan = require("morgan"),
+		routes = require('./routes'),
+		path = require("path");
 
 // use ejs-locals for all ejs templates: 
 app.engine('ejs', engine);

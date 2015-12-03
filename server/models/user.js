@@ -11,7 +11,11 @@ var userSchema = new mongoose.Schema({
   password:{
     type:String,
     required: true
-  }
+  },
+  posts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Post"
+  }]
 });
 
 userSchema.pre('save', function(next) {
