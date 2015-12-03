@@ -21,10 +21,10 @@ app.service("PostService", ['$http', function($http) {
 app.service("UserService", function($http, $location, $q, $window){
   return {
     signup: function(user){
-      return $http.post('/api/signup', user);
+      return $http.post('/api/users/signup', user);
     },
     login: function(user){
-      return $http.post('/api/login', user);
+      return $http.post('/api/users/login', user);
     },
     setCurrentUser: function(data){
       $window.localStorage.setItem("token",data.data.token);

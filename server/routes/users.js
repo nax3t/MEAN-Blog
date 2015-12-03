@@ -55,14 +55,14 @@ router.post('/login',function(req,res){
   });
 });
 
-router.get('/users', function(req,res){
+router.get('/', function(req,res){
   db.User.find({}, function(err,users){
     if (err) res.status(500).send(err);
     res.status(200).send(users);
   });
 });
 
-router.get('/users/:id', checkToken, function(req,res){
+router.get('/:id', checkToken, function(req,res){
   db.User.findById(req.decoded_id, function(err,user){
     if (err) res.status(500).send(err);
     if (!user) res.status(401).send(err);
@@ -71,7 +71,7 @@ router.get('/users/:id', checkToken, function(req,res){
   });
 });
 
-router.put('/users/:id', checkToken, function(req,res){
+router.put('/:id', checkToken, function(req,res){
  db.User.findByIdAndUpdate(req.decoded_id, req.body, {new: true}, function(err,user){
    if (err) res.status(400).send(err);
    else {
@@ -81,7 +81,7 @@ router.put('/users/:id', checkToken, function(req,res){
  });
 });
 
-router.delete('/users/:id', checkToken, function(req,res){
+router.delete('/:id', checkToken, function(req,res){
   db.User.findByIdAndRemove(req.decoded_id, function(err,user){
     if (err) res.status(500).send(err);
     if (!user) res.status(401).send(err);

@@ -8,7 +8,13 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($ro
 		})
 		.when('/posts/new', {
 			templateUrl: "templates/posts/new.html",
-			controller: "NewPostController"
+			controller: "NewPostController",
+			restricted: true,
+	    resolve: {
+	      currentUser: function(UserService) {
+	        return UserService.getCurrentUser();
+	      }
+	    }
 		})
 		.when('/posts/:id', {
 			templateUrl: "templates/posts/show.html",
@@ -39,7 +45,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function($ro
 		    controller: "HomeController",
 		    restricted: true,
 		    resolve: {
-		      currentUser : function(UserService) {
+		      currentUser: function(UserService) {
 		        return UserService.getCurrentUser();
 		      },
 		      users: function(UserService){
