@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="meanBlog">
+<html lang="en" ng-app="meanBlog" ng-cloak>
 	<head>
 		<meta charset="UTF-8">
 		<title>Mean Blog</title>
@@ -9,6 +9,11 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		<base href="/">
+		<style>
+		  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+		    display: none !important;
+		  }
+		</style>
 	</head>
 	<body>
 		<div ng-view>
