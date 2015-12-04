@@ -4,7 +4,8 @@ app.service("PostService", ['$http', function($http) {
 			return $http.get('/api/posts');
 		},
 		addPost: function(post) {
-			return $http.post('/api/posts', post);
+      debugger
+			return $http.post('http://localhost:3000/posts', post);
 		},
 		getPost: function(id) {
 			return $http.get('/api/posts/'+id);

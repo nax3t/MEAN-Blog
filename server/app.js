@@ -35,6 +35,6 @@ app.get('*', function(req, res) {
 });
 
 // start the server
-app.listen(3000, function () {
+app.listen(3001, function () {
 	console.log('Starting a server on localhost:3000');
 });

@@ -68,11 +68,13 @@ app.controller("PostsController", ['$scope', 'PostService', function($scope, Pos
 }]);
 
 app.controller("NewPostController", ['$scope', 'PostService', '$location', 'UserService', function($scope, PostService, $location, UserService) {
-	var user_id = UserService.getCurrentUser().id;
-	$scope.addPost = function(post) {
-    debugger
-		post.user = user_id;
-		PostService.addPost(post).then(function (post) {
+  // var user_id = UserService.getCurrentUser().id;
+  $scope.addPost = function(post) {
+    // post.user = user_id;
+    var railsPost = {}
+    railsPost.post = post
+    PostService.addPost(railsPost).then(function (post) {
+  	$scope.post = {};
       debugger
 			$location.path('/posts')
 		})
