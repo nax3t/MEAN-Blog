@@ -62,21 +62,18 @@ app.controller("PostsController", ['$scope', 'PostService', function($scope, Pos
 	$scope.post = {};
 
 	PostService.getPosts().then(function (posts) {
+    debugger
 		$scope.posts = posts.data;
 	});
-
-	$scope.addPost = function(post) {
-		PostService.addPost(post).then(function (post) {
-			$location.path('/posts')
-		})
-	}
 }]);
 
 app.controller("NewPostController", ['$scope', 'PostService', '$location', 'UserService', function($scope, PostService, $location, UserService) {
 	var user_id = UserService.getCurrentUser().id;
 	$scope.addPost = function(post) {
+    debugger
 		post.user = user_id;
 		PostService.addPost(post).then(function (post) {
+      debugger
 			$location.path('/posts')
 		})
 	}

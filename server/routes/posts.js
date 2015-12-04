@@ -29,7 +29,7 @@ router.route('/')
     })
   })
   .post(function (req, res) {
-    console.log(req.body)
+    console.log("**BODY**", req.body)
     db.Post.create(req.body, function (err, post){
 			if (err) {
 				console.log(err);
